@@ -1,25 +1,28 @@
 <html>
   <head>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="doctorLookup.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     <title>Doctor Lookup</title>
   </head>
   <body>
     <div class="container">
       <h1>Doctor Lookup</h1>
 
-      <form id="issue-form" action="index.html" method="post">
-        <label for="inputIssue">Search by a medical issue:</label>
-        <input id="inputIssue" type="text">
-        <button type="submit" class="btn-success" id="findIssue">Find</button>
+      <form id="search-form" action="index.html" method="post">
+        <div class="">
+          <label for="inputName">Search by Name:</label>
+          <input id="inputName" type="text">
+        </div>
+        <div class="">
+          <label for="inputIssue">Search by a medical issue:</label>
+          <input id="inputIssue" type="text">
+        </div>
+        <button type="submit" class="btn-success" id="find">Find</button>
       </form>
 
       <div class="errors"></div>
       <div>
-        <ul id="showListOfDocByIssue"></ul>
-      </div>
-      <div>
-        <ul id="showListOfDocByName"></ul>
+        <ul id="showListOfDoctors"></ul>
       </div>
 
     </div>

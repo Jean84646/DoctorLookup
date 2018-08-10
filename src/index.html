@@ -8,16 +8,21 @@
     <div class="container">
       <h1>Doctor Lookup</h1>
 
-      <form id="search-form" action="index.html" method="post">
-        <div class="">
-          <label for="inputName">Search by Name:</label>
-          <input id="inputName" type="text">
+      <form id="search-form">
+        <div class="radio">
+          <label>
+            <input type="radio" name="searchKey" value="inputName">
+            Search by name
+          </label>
         </div>
-        <div class="">
-          <label for="inputIssue">Search by a medical issue:</label>
-          <input id="inputIssue" type="text">
+        <div class="radio">
+          <label>
+            <input type="radio" name="searchKey" value="inputIssue">
+            Search by a medical issue
+          </label>
         </div>
-        <button type="submit" class="btn-success" id="find">Find</button>
+        <input type="text" id="keyWord" required>
+        <button type="submit" class="btn-success">Find</button>
       </form>
 
       <div class="errors"></div>

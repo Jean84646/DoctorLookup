@@ -6,14 +6,21 @@ import { doctorLookup } from './doctorLookup.js';
 $(document).ready(function() {
   $('#search-form').submit(function(event) {
     event.preventDefault();
-    let name = $('#inputName').val();
-    let issue = $('#inputIssue').val();
+    $('#showListOfDoctors').text("");
+    let searchTerm = $('#keyWord').val();
+    let searchKey = $(".searchKey").val();
+    let promise;
     let newLookup = new doctorLookup();
-    let promise = newLookup.searchByIssue(issue);
-
+    if (searchKey === "inputName") {
+      promise = newLookup.searchByName(searchTerm);
+    } else {
+      promise = newLookup.searchByIssue(searchTerm);
+    }
     promise.then(function(response) {
       let body = JSON.parse(response);
-      console.log(body);
+      if (body.data.length === 0) {
+        return $(".errors").text("Unable to find matching criteria. Please try again!")
+      }
       body.data.forEach(function(item) {
         let name = item.profile.first_name + " " + item.profile.last_name + ", " + item.profile.title;
         let address = item.practices[0].visit_address.street + " " + item.practices[0].visit_address.street2 + ", "
